@@ -21,6 +21,10 @@ const requestComponents = upload.fields([
     { name: 'outputFormat', maxCount: 1 },
     { name: 'fileName', maxCount: 1 }]);
 
+app.get('/', (req, res) => {
+    res.send('Welcome to carbone API, use /parseFile with POST request in order to get data');
+});
+
 app.post('/parseFile', requestComponents, function (req, res, next) {
     const _template = req.files['template'][0];
     const _content = JSON.parse(req.body['content']);
