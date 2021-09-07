@@ -1,0 +1,15 @@
+{
+  "name": "jaguards_carbone_api",
+  "version": "1.0.0",
+  "description": "API carbone for use in Jaguards",
+  "author": "Christophe Desclaux <christophe@jaguards.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "carbone": "^3.2.3",
+    "express": "^4.17.1",
+    "multer": "^1.4.3"
+  }
+}
