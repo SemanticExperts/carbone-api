@@ -31,19 +31,25 @@ app.post('/parseFile', requestComponents, function (req, res, next) {
     const _outputFormat = req.body['outputFormat'];
     const _fileName = req.body['fileName'];
 
+    console.log("Received a new transformation Request for fileName=" + _fileName);
+
     const _options = {
         convertTo: _outputFormat,
-        reportName: _fileName
+        reportName: _fileName,
+        lang: "fr-fr"
     };
 
     carbone.render(_template.path, _content, _options, (err, result, reportName) => {
         if (err) {
-            res.send(err);
+            res.status(400);
+            res.send(err.message);
+            console.log("    " + err.message);
         } else {
             fs.writeFileSync('./build/' + reportName, result);
             res.setHeader('Content-disposition', 'attachment; filename=' + reportName);
             res.setHeader('Content-type', 'application/pdf');
             res.sendFile('/app/build/' + reportName);
+            console.log("    report send");
         }
     });
 });
