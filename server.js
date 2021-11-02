@@ -36,7 +36,8 @@ app.post('/parseFile', requestComponents, function (req, res, next) {
     const _options = {
         convertTo: _outputFormat,
         reportName: _fileName,
-        lang: "fr-fr"
+        lang: "fr",
+        timezone: "Europe/Paris"
     };
 
     carbone.render(_template.path, _content, _options, (err, result, reportName) => {
