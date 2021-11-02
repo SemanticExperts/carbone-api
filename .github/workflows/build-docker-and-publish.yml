@@ -1,0 +1,23 @@
+name: build-docker-and-publish
+
+on:
+  push:
+    branches:
+        - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
+
+      - uses: docker/build-push-action@v1.1.0
+        name: Build & push Docker image
+        with:
+          tags: latest
+          repository: semanticexperts/carbone-api
+          dockerfile: Dockerfile
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
