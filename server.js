@@ -50,7 +50,7 @@ app.post('/parseFile', requestComponents, function (req, res, next) {
             res.setHeader('Content-disposition', 'attachment; filename=' + reportName);
             res.setHeader('Content-type', 'application/pdf');
             res.sendFile('/app/build/' + reportName);
-            console.log("    report send");
+            console.log("    report send to the client");
         }
     });
 });

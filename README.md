@@ -13,3 +13,11 @@ Then from Jaguards configure the EXTENDED_PDF_GENERATOR_SERVER_CONFIG like that:
 
 ## In order to update the docker hub image use:
 docker push semanticexperts/carbone-api
+
+
+## In order to install it on dev server:
+docker pull semanticexperts/carbone-api
+docker kill carbone-api
+docker rmi semanticexperts/carbone-api
+sudo docker run --rm  --network host --name carbone-api semanticexperts/carbone-api -d
+
