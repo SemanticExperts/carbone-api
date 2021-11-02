@@ -1,8 +1,9 @@
 name: build-docker-and-publish
 
 on:
-  release:
-    types: [ released ]
+  push:
+    branches:
+        - dev
 
 jobs:
   build:
@@ -16,7 +17,6 @@ jobs:
         name: Build & push Docker image
         with:
           tags: latest
-          tag_with_ref: true
           repository: semanticexperts/carbone-api
           dockerfile: Dockerfile
           username: ${{ secrets.DOCKER_USERNAME }}
