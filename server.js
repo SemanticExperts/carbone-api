@@ -19,6 +19,7 @@ const requestComponents = upload.fields([
     { name: 'template', maxCount: 1 },
     { name: 'content', maxCount: 1 },
     { name: 'outputFormat', maxCount: 1 },
+    { name: 'formatOptions', maxCount: 1 },
     { name: 'fileName', maxCount: 1 }]);
 
 app.get('/', (req, res) => {
@@ -29,12 +30,14 @@ app.post('/parseFile', requestComponents, function (req, res, next) {
     const _template = req.files['template'][0];
     const _content = JSON.parse(req.body['content']);
     const _outputFormat = req.body['outputFormat'];
+    const _formatOptions = req.body['formatOptions'];
     const _fileName = req.body['fileName'];
 
     console.log("Received a new transformation Request for fileName=" + _fileName);
 
     const _options = {
         convertTo: _outputFormat,
+        formatOptions : _formatOptions,
         reportName: _fileName,
         lang: "fr",
         timezone: "Europe/Paris"
