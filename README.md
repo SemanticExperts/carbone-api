@@ -16,6 +16,7 @@ just commit to dev branch and check action on https://github.com/SemanticExperts
 
 
 ## In order to install it on dev server:
+docker rm carbone-api
 docker pull semanticexperts/carbone-api
 docker kill carbone-api
 docker rmi semanticexperts/carbone-api
