@@ -8,7 +8,7 @@ const fs = require('fs'); // File system
 const multer  = require('multer'); // Possibility to retrieve files from multi-part request
 const upload = multer({
     dest: 'templates/',
-    limits: {fieldSize: 2 * 1024 * 1024}
+    limits: {fieldSize: 1024 * 1024 * 1024}
 });
 
 // Constants
