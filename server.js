@@ -6,10 +6,10 @@ const express = require('express'); // REST API
 const carbone = require('carbone'); // CarboneJS
 const fs = require('fs'); // File system
 const multer  = require('multer'); // Possibility to retrieve files from multi-part request
-const upload = multer(
-    { dest: 'templates/' },
-    limits: { fieldSize: 2 * 1024 * 1024 }
-);
+const upload = multer({
+    dest: 'templates/',
+    limits: {fieldSize: 2 * 1024 * 1024}
+});
 
 // Constants
 const PORT = 8083;
