@@ -55,7 +55,6 @@ console.log(_formatOptions);
     };
 
     console.log("Options = ", _options);
-//    console.log(JSON.stringify(_content));
     carbone.render(_template.path, _content, _options, (err, result, reportName) => {
         if (err) {
             res.status(400);
