@@ -5,6 +5,7 @@
 const express = require('express'); // REST API
 const carbone = require('carbone'); // CarboneJS
 const fs = require('fs'); // File system
+const mime = require('mime'); // Mime type
 const multer  = require('multer'); // Possibility to retrieve files from multi-part request
 const upload = multer({
     dest: 'templates/',
@@ -35,9 +36,11 @@ app.post('/parseFile', requestComponents, function (req, res, next) {
     const _outputFormat = req.body['outputFormat'];
     let _formatOptions = req.body['formatOptions'];
     const _fileName = req.body['fileName'];
+    const _outputMime = mime.getType(_outputFormat);
 
 
-console.log(_formatOptions);
+    console.log(_formatOptions);
+    console.log("mime = " + _outputMime);
 
     if(_formatOptions) {
         _formatOptions = JSON.parse(_formatOptions);
@@ -64,7 +67,7 @@ console.log(_formatOptions);
         } else {
             fs.writeFileSync('./build/' + reportName, result);
             res.setHeader('Content-disposition', 'attachment; filename=' + reportName);
-            res.setHeader('Content-type', 'application/pdf');
+            res.setHeader('Content-type', _outputMime);
             res.sendFile('/app/build/' + reportName);
             console.log("    report send to the client");
         }

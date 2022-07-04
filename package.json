@@ -10,6 +10,7 @@
   "dependencies": {
     "carbone": "^3.2.3",
     "express": "^4.17.1",
+    "mime": "^3.0.0",
     "multer": "^1.4.3"
   }
 }
