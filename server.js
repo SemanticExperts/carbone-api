@@ -31,6 +31,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/parseFile', requestComponents, function (req, res, next) {
+    console.log("Request received");
+    console.log("Request size" + req.body['content'].length);
     const _template = req.files['template'][0];
     const _content = JSON.parse(req.body['content']);
     const _outputFormat = req.body['outputFormat'];
